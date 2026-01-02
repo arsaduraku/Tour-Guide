@@ -1,4 +1,4 @@
-/* Stilizimi i Webfaqes Tour Guide */
+/* Stilizimi i webfaqes */
 
 *{
     margin:0;
@@ -25,4 +25,89 @@ a{
 
 ul{
     list-style:none;
+}
+
+/* -NAVBAR*/
+.navbar{
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 10%;
+  background:rgba(15,15,20,.92);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  box-shadow:0 10px 25px rgba(0,0,0,.5);
+}
+
+.nav-left{
+  font-weight:700;
+  font-size:1.3rem;
+  color:#ffb703;
+}
+
+.nav-center{
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+.nav-center li{
+  position:relative;
+}
+
+.nav-center a{
+  display:inline-block;
+  padding:6px 10px;
+  font-weight:500;
+  position:relative;
+  padding-bottom:8px;
+}
+
+.nav-center a::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:0;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#ffb703,#ff6b35);
+  transform:translateX(-50%);
+  transition:width .2s;
+}
+.nav-center a:hover{color:#fff;}
+.nav-center a:hover::after{width:100%;}
+
+.nav-right a{
+  font-size:1.2rem;
+}
+.nav-right a:hover{color:#ffb703;}
+
+/* -DROPDOWN */
+.dropdown{position:relative;display:inline-block;}
+.dropbtn{cursor:pointer;}
+
+.dropdown-menu{
+  position:absolute;
+  top:42px;
+  left:50%;
+  transform:translateX(-50%);
+  min-width:190px;
+  display:none;
+  background:rgba(20,20,25,.95);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:10px 0;
+  box-shadow:0 18px 45px rgba(0,0,0,.65);
+}
+.dropdown:hover .dropdown-menu{display:block;}
+
+.dropdown-menu li a{
+  display:block;
+  padding:10px 16px;
+  font-size:.95rem;
+}
+.dropdown-menu li a:hover{
+  background:rgba(255,183,3,.14);
 }
