@@ -63,7 +63,19 @@ $(function () {
 
 
 
-
-
-  
+/* Perdorimi i map/filter/reduce*/
+const ratings = $("#reviewsTrack .stars").toArray().map(el => {
+  const text = $(el).text();      
+  return (text.match(/★/g) || []).length;
 });
+
+const goodRatings = ratings.filter(r => r > 4);
+
+const avgRating = ratings.reduce((sum, r) => sum + r, 0) / (ratings.length || 1);
+
+console.log("All ratings:", ratings);
+console.log("Good ratings:", goodRatings);
+console.log("Average rating:", avgRating.toFixed(2));
+
+
+  });
