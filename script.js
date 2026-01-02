@@ -136,6 +136,64 @@ $(function () {
     if (e.key === "Escape") closeMenu();
   });
 
+/* -REVIEW-*/
+  const $reviewModal = $("#reviewModal");
+  const $reviewHint = $("#reviewHint");
+  const $reviewForm = $("#reviewForm");
+
+  function openReviewModal() {
+    $reviewModal.addClass("open").attr("aria-hidden", "false").fadeIn(120);
+    $("body").css("overflow", "hidden");
+  }
+
+  function closeReviewModal() {
+    $reviewModal.removeClass("open").attr("aria-hidden", "true").fadeOut(120);
+    $("body").css("overflow", "");
+    $reviewHint.text("");
+    if ($reviewForm.length) $reviewForm[0].reset();
+  }
+
+  $("#openReview").on("click", openReviewModal);
+  $("#closeReview").on("click", closeReviewModal);
+
+  $reviewModal.on("click", function (e) {
+    if (e.target === this) closeReviewModal();
+  });
+
+  $(document).on("keydown", function (e) {
+    if (e.key === "Escape" && $reviewModal.hasClass("open")) closeReviewModal();
+  });
+
+$reviewForm.on("submit", function (e) {
+  e.preventDefault();
+
+  const name = ($("#reviewName").val() || "").trim();
+  const text = ($("#reviewText").val() || "").trim();
+
+  if (name.length < 3) {
+    $reviewHint.text("Name must be at least 3 characters.");
+    return;
+  }
+  if (text.length < 10) {
+    $reviewHint.text("Review must be at least 10 characters.");
+    return;
+  }
+
+  // ===== Date + string manipulation requirement =====
+  const now = new Date();
+  const dateStr = now.toLocaleDateString("en-GB"); // p.sh. 28/12/2025
+  const timeStr = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+  // shembull format:
+  const niceName = name.replace(/\s+/g, " ");   // i largon hapesirat
+  const shortText = text.slice(0, 60) + (text.length > 60 ? "…" : "");
+
+  $("#reviewMeta").text(`Submitted on ${dateStr} at ${timeStr} by ${niceName}.`);
+  $reviewHint.text(`Thanks!Saved: "${shortText}"`);
+
+  setTimeout(closeReviewModal, 900);
+});
+
   /* new */
   $('a[href^="#"]').on("click", function (e) {
     const href = $(this).attr("href");
