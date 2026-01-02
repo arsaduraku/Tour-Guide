@@ -77,5 +77,39 @@ console.log("All ratings:", ratings);
 console.log("Good ratings:", goodRatings);
 console.log("Average rating:", avgRating.toFixed(2));
 
+/* -NAVBAR- */
+  const $dropBtn = $("#exploreBtn");
+  const $menu = $("#exploreMenu");
 
+  function openMenu() {
+    $menu.css({
+      opacity: "1",
+      visibility: "visible",
+      transform: "translateX(-50%) translateY(10px)",
+    });
+    $dropBtn.attr("aria-expanded", "true");
+  }
+
+  function closeMenu() {
+    $menu.css({ opacity: "", visibility: "", transform: "" });
+    $dropBtn.attr("aria-expanded", "false");
+  }
+
+  function isMenuOpen() {
+    return $dropBtn.attr("aria-expanded") === "true";
+  }
+
+  $dropBtn.on("click", function (e) {
+    e.preventDefault();
+    isMenuOpen() ? closeMenu() : openMenu();
+  });
+
+  $(document).on("click", function (e) {
+    if (!$(e.target).closest(".dropdown").length) closeMenu();
+  });
+
+  $menu.find("a").on("click", closeMenu);
+  $(document).on("keydown", function (e) {
+    if (e.key === "Escape") closeMenu();
+  });
   });
