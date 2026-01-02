@@ -193,7 +193,29 @@ ul{
 .hero-btn:active{
   transform: translateY(0);
 }
+/* -SECTIONS- */
+.section,.cards{
+  padding:80px 10%;
+}
 
+.section h2,.cards h2{
+  font-size:2.1rem;
+  margin-bottom:22px;
+  color:#ffb703;
+  position:relative;
+  display:inline-block;
+  padding-bottom:10px;
+}
+
+.section h2::after,.cards h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:72%;
+  height:2px;
+  background:linear-gradient(90deg,#ffb703,#ff6b35,transparent);
+}
 /*Cards grid*/
 .card-container{
   display:grid;
