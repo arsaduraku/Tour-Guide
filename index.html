@@ -365,6 +365,44 @@
     </div>
 
     <div class="reviews-dots" id="reviewsDots"></div>
+  
+    <!-- REVIEW MODAL -->
+    <div class="review-modal" id="reviewModal" aria-hidden="true">
+      <div class="review-modal-card">
+        <div class="review-modal-top">
+          <h3>Add your review</h3>
+          <button class="close-modal" id="closeReview" type="button" aria-label="Close">×</button>
+        </div>
+
+        <form class="review-form" id="reviewForm">
+          <label>
+            Your name
+            <input type="text" id="reviewName" placeholder="e.g., Emma M." required />
+          </label>
+
+          <label>
+            Rating
+            <select id="reviewRating" required>
+              <option value="5">★★★★★ (5)</option>
+              <option value="4">★★★★☆ (4)</option>
+              <option value="3">★★★☆☆ (3)</option>
+              <option value="2">★★☆☆☆ (2)</option>
+              <option value="1">★☆☆☆☆ (1)</option>
+            </select>
+          </label>
+
+          <label>
+            Review
+            <textarea id="reviewText" rows="4" placeholder="Write your review..." required></textarea>
+          </label>
+
+          <button type="submit" class="submit-review">Submit</button>
+          <p class="form-hint" id="reviewHint"></p>
+          <p class="form-hint" id="reviewMeta"></p>
+        </form>
+      </div>
+    </div>
+  </section>
 
 <!-- MAP -->
  <section class="section" id="map">
