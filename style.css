@@ -192,21 +192,3 @@ ul{
 .hero-btn:active{
   transform: translateY(0);
 }
-
-.btn{
-  display:inline-block;
-  padding:11px 26px;
-  border-radius:999px;
-  border:1px solid rgba(255,183,3,.35);
-  background:rgba(255,183,3,.12);
-  color:#fff;
-  box-shadow:0 12px 30px rgba(0,0,0,.35);
-  transition:.2s;
-}
-.btn:hover{
-  transform:translateY(-2px);
-  background:rgba(255,107,53,.14);
-  border-color:rgba(255,107,53,.45);
-}
-.btn:active{transform:translateY(0);}
-.btn.small{padding:6px 16px;font-size:.88rem;}
