@@ -1,3 +1,100 @@
+/* -Profili- */
+
+(function(){
+  const profileBtn = document.getElementById("profileBtn");
+  const authPage   = document.getElementById("profile");
+  const closeBtn   = document.getElementById("authClose");
+
+  const tabLogin   = document.getElementById("tabLogin");
+  const tabSignup  = document.getElementById("tabSignup");
+  const loginForm  = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+
+  if(!profileBtn || !authPage || !closeBtn || !tabLogin || !tabSignup || !loginForm || !signupForm) return;
+
+  function resetForms(){
+    loginForm.reset();
+    signupForm.reset();
+  }
+
+  function openAuth(){
+    authPage.classList.add("open");
+    authPage.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    showLogin();
+    history.replaceState(null, "", "#profile");
+  }
+
+  function closeAuth(){
+    authPage.classList.remove("open");
+    authPage.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    resetForms();
+    history.replaceState(null, "", "#home");
+  }
+
+  function showLogin(){
+    tabLogin.classList.add("active");
+    tabSignup.classList.remove("active");
+    tabLogin.setAttribute("aria-selected", "true");
+    tabSignup.setAttribute("aria-selected", "false");
+    loginForm.classList.add("show");
+    signupForm.classList.remove("show");
+  }
+
+  function showSignup(){
+    tabSignup.classList.add("active");
+    tabLogin.classList.remove("active");
+    tabSignup.setAttribute("aria-selected", "true");
+    tabLogin.setAttribute("aria-selected", "false");
+    signupForm.classList.add("show");
+    loginForm.classList.remove("show");
+  }
+
+  /* -events- */
+  profileBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    openAuth();
+  });
+
+  closeBtn.addEventListener("click", closeAuth);
+
+  authPage.addEventListener("click", (e) => {
+    if(e.target === authPage) closeAuth();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if(e.key === "Escape" && authPage.classList.contains("open")){
+      closeAuth();
+    }
+  });
+
+  tabLogin.addEventListener("click", showLogin);
+  tabSignup.addEventListener("click", showSignup);
+
+  /* -kur te behet submit- */
+
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();     // no POST, no 405
+    resetForms();           // pastron inputet
+    closeAuth();            // mbyllet
+    window.location.hash = "#home"; // automatikisht ne home page
+  });
+
+  signupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    resetForms();
+    closeAuth();
+    window.location.hash = "#home";
+  });
+
+  /* ---------- hapet profili nese URL eshte #profile ---------- */
+  if(location.hash === "#profile"){
+    openAuth();
+  }
+
+})();
+
 $(function () {
   const $track = $("#reviewsTrack");
   const $prev = $("#revPrev");

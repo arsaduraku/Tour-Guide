@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prishtina Tour Guide</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="script.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 
 </head>
 <body>
 <!-- NAVBAR -->
- <nav class="navbar">
+ < class="navbar">
     <div class="nav-left">Prishtina Tour Guide</div>
 
     <ul class="nav-center">
@@ -33,8 +31,66 @@
       <li><a href="#map">Map</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="nav-right">
+      <!-- Profile icon opens in-page auth "page" -->
+      <a href="#profile" id="profileBtn" aria-label="Open profile login">
+        <i class="fa-solid fa-user"></i>
+      </a>
+    </div>
+  </nav>
 
- </nav>
+   <!-- PROFILE / AUTH PAGE (IN-PAGE) -->
+  <section class="auth-page" id="profile" aria-hidden="true">
+    <div class="auth-shell">
+      <button class="auth-close" id="authClose" type="button" aria-label="Close">×</button>
+
+      <h2>Welcome back</h2>
+      <p class="auth-sub">Log in or create an account: same site, no extra pages.</p>
+
+      <div class="auth-tabs" role="tablist" aria-label="Auth tabs">
+        <button class="auth-tab active" id="tabLogin" type="button" role="tab" aria-selected="true">Login</button>
+        <button class="auth-tab" id="tabSignup" type="button" role="tab" aria-selected="false">Sign up</button>
+      </div>
+
+   <form class="auth-form show" id="loginForm" action="#" method="get">
+
+
+        <label>Email
+          <input type="email" required placeholder="you@example.com" />
+        </label>
+
+        <label>Password
+          <input type="password" required placeholder="••••••••" />
+        </label>
+
+        <button class="auth-submit" type="submit">Login</button>
+        <p class="auth-hint">Demo mode: submit will just show an alert.</p>
+      </form>
+
+   <form class="auth-form" id="signupForm" action="#" method="get">
+
+
+        <label>Full name
+          <input type="text" required placeholder="Your name" />
+        </label>
+
+        <label>Email
+          <input type="email" required placeholder="you@example.com" />
+        </label>
+
+        <label>Password
+          <input type="password" required placeholder="Create a password" />
+        </label>
+
+        <button class="auth-submit" type="submit">Create account</button>
+        <p class="auth-hint">Also demo mode — no real backend needed for school.</p>
+      </form>
+    </div>
+  </section>
+
+
+ 
+
 
 <!-- HERO -->
    <header class="hero" id="home">
@@ -435,5 +491,10 @@
 
     <p>© 2025 Prishtina Tour Guide</p>
   </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 </body>
 </html>
